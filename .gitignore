@@ -1,0 +1,21 @@
+# Data and local files
+raw_data.xlsx
+*.xlsx
+*.xls
+*.csv
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Output images and heatmaps
+through_actual_heatmap.png
+through_pred_heatmap.png
+through_pred_vs_actual.png
+*.png
+
+# Virtual environments
+venv/
+.venv/
+env/
