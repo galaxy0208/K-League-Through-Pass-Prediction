@@ -3,7 +3,7 @@
 # LANCON : Pathfinder ⚽
 > **K리그-서울시립대 공개 AI 경진대회 (Track 2: 아이디어 개발 부문)**
 
-[cite_start]축구 경기 중 발생하는 패스 시퀀스(Context) 데이터를 기반으로, 수비수 위치 정보가 없는 제약 조건 속에서 **다음에 전개될 최적의 '공간 침투 패스 도달 위치'를 경기장 그리드(Grid) 단위의 확률 분포(Heatmap)로 예측**하는 AI 기반 전술 분석 서비스 MVP입니다.
+축구 경기 중 발생하는 패스 시퀀스(Context) 데이터를 기반으로, 수비수 위치 정보가 없는 제약 조건 속에서 **다음에 전개될 최적의 '공간 침투 패스 도달 위치'를 경기장 그리드(Grid) 단위의 확률 분포(Heatmap)로 예측**하는 AI 기반 전술 분석 서비스 MVP입니다.
 
 ---
 
@@ -21,12 +21,12 @@
 
 ## 🛠 2. 기술 스택 (Tech Stack)
 
-* [cite_start]**Language:** `Python (v3.x)`
-* [cite_start]**Data Processing:** `pandas`, `numpy` (엑셀 파싱, 이벤트 기반 시퀀스 벡터화 및 매트릭스 캐싱)
-* [cite_start]**AI Model:** `scikit-learn`
-  * [cite_start]`Logistic Regression` (경량 다중 클래스 분류 및 확률 추정용 기본 모델)
+* **Language:** `Python (v3.x)`
+* **Data Processing:** `pandas`, `numpy` (엑셀 파싱, 이벤트 기반 시퀀스 벡터화 및 매트릭스 캐싱)
+* **AI Model:** `scikit-learn`
+  * `Logistic Regression` (경량 다중 클래스 분류 및 확률 추정용 기본 모델)
   * `MLPClassifier` (Multi-Layer Perceptron 구조의 딥러닝 대안 모델 백업)
-* [cite_start]**Visualization:** `matplotlib` (경기장 라인 드로잉, 2D 공간 Heatmap 및 Scatter 플롯)
+* **Visualization:** `matplotlib` (경기장 라인 드로잉, 2D 공간 Heatmap 및 Scatter 플롯)
 
 ---
 
@@ -54,7 +54,7 @@
   [start_x/105, start_y/68, end_x/105, end_y/68, prog_x/105, total_dist/max_pitch_dist]
 
 #### 2) Output Label (Target 공간 설계)
-* [cite_start]단일 2D 좌표를 직접 맞추는 회귀 방식 대신, 경기장을 **$21 \times 14$ 그리드(총 294개 셀)**로 분할하여 다중 클래스 분류(Multi-class Classification) 문제로 정의했습니다.
+* 단일 2D 좌표를 직접 맞추는 회귀 방식 대신, 경기장을 **$21 \times 14$ 그리드(총 294개 셀)**로 분할하여 다중 클래스 분류(Multi-class Classification) 문제로 정의했습니다.
 * 도착 좌표 $(x, y)$가 속한 셀의 ID($y \in [0, 293]$)를 타겟 라벨로 채택했습니다.
 
 ---
@@ -99,6 +99,6 @@
 
 ## 🚀 6. 실용성 및 향후 확장 가능성 (Future Work)
 
-* **정량적 스카우팅 및 선수 평가:** AI 모델의 예측 분포 확률보다 훨씬 낮은 확률의 보이지 않는 좁은 공간으로 패스를 찔러 성공시킨 선수를 추적하여, **'AI조차 예측하지 못한 창의적인 패서'**를 정량적으로 발굴할 수 있습니다. [cite: 35]
+* **정량적 스카우팅 및 선수 평가:** AI 모델의 예측 분포 확률보다 훨씬 낮은 확률의 보이지 않는 좁은 공간으로 패스를 찔러 성공시킨 선수를 추적하여, **'AI조차 예측하지 못한 창의적인 패서'**를 정량적으로 발굴할 수 있습니다.
 * **딥러닝 아키텍처 확장:** 현재 구현된 경량 `Logistic Regression` 구조에서 향후 **Transformer (Self-Attention)** 또는 **Sequence-to-Sequence** 기반 모델로 아키텍처를 업그레이드하면, 시간에 따른 가변적 시퀀스 흐름과 더 복합적인 팀 빌드업 패턴을 학습할 수 있습니다.
 * **실시간 미디어 및 방송 솔루션:** 라이브 이벤트 데이터 피드와 연동할 경우, 중계 화면 상에 실시간으로 다음 침투 공간 예측 히트맵과 취약 공간 가이드라인을 제공하여 팬들에게 한 차원 높은 데이터 기반 관전 경험을 선사할 수 있습니다.
